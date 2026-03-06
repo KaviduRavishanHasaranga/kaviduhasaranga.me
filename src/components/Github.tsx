@@ -1,0 +1,57 @@
+import React from 'react'
+
+export default function Github() {
+  return (
+    <section className="py-20 px-8" id="github">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 mt-8">
+          Github & <span className="gradient-text">Open Source</span>
+        </h2>
+        
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="glass-card p-8 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/30 transition-all duration-300">
+            <h3 className="text-2xl font-bold text-white mb-4">📊 GitHub Activity</h3>
+            <div className="space-y-4">
+              <div className="flex justify-between items-center">
+                <span className="text-gray-300">Repositories</span>
+                <span className="text-2xl font-bold text-purple-400">25+</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-gray-300">Contributions</span>
+                <span className="text-2xl font-bold text-purple-400">500+</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-gray-300">Stars Received</span>
+                <span className="text-2xl font-bold text-purple-400">50+</span>
+              </div>
+            </div>
+            <a href="https://github.com" className="mt-6 inline-block bg-linear-to-r from-pink-500 to-purple-600 px-6 py-2 rounded-full text-white font-semibold hover:scale-105 hover:shadow-xl hover:shadow-purple-500/50 transition-all duration-300">
+              Visit GitHub Profile
+            </a>
+          </div>
+          
+          <div className="glass-card p-8 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300">
+            <h3 className="text-2xl font-bold text-white mb-4">🤝 Open Source</h3>
+            <p className="text-gray-300 mb-4">
+              I actively contribute to open source projects and believe in the power of community-driven development.
+            </p>
+            <ul className="space-y-3 text-gray-300">
+              <li className="flex items-start gap-2">
+                <span className="text-purple-400">✓</span>
+                <span>Contributor to various React libraries</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-purple-400">✓</span>
+                <span>Maintainer of personal open source tools</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-purple-400">✓</span>
+                <span>Active in developer communities</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
