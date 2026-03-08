@@ -6,7 +6,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="py-12 px-8 border-t border-gray-800">
+    <footer className="py-12 px-8 border-t border-gray-200 dark:border-gray-800">
       <div className="max-w-6xl mx-auto">
         {/* Mobile Layout */}
         <div className="md:hidden flex flex-col items-center gap-8">
@@ -31,17 +31,17 @@ export default function Footer() {
 
           {/* Social Icons */}
           <div className="flex gap-4 justify-center">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 glass-card flex items-center justify-center rounded-full hover:bg-white/10 hover:scale-125 hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300">
-              <FaGithub className="text-2xl text-gray-300" />
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 glass-card bg-white/70 dark:bg-white/5 flex items-center justify-center rounded-full hover:bg-purple-50 dark:hover:bg-white/10 hover:scale-125 hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 border border-gray-200 dark:border-white/10">
+              <FaGithub className="text-2xl text-gray-700 dark:text-gray-300" />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 glass-card flex items-center justify-center rounded-full hover:bg-white/10 hover:scale-125 hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300">
-              <FaLinkedin className="text-2xl text-gray-300" />
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 glass-card bg-white/70 dark:bg-white/5 flex items-center justify-center rounded-full hover:bg-blue-50 dark:hover:bg-white/10 hover:scale-125 hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 border border-gray-200 dark:border-white/10">
+              <FaLinkedin className="text-2xl text-gray-700 dark:text-gray-300" />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 glass-card flex items-center justify-center rounded-full hover:bg-white/10 hover:scale-125 hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300">
-              <FaTwitter className="text-2xl text-gray-300" />
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 glass-card bg-white/70 dark:bg-white/5 flex items-center justify-center rounded-full hover:bg-cyan-50 dark:hover:bg-white/10 hover:scale-125 hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 border border-gray-200 dark:border-white/10">
+              <FaTwitter className="text-2xl text-gray-700 dark:text-gray-300" />
             </a>
-            <a href="mailto:kavidu@example.com" className="w-12 h-12 glass-card flex items-center justify-center rounded-full hover:bg-white/10 hover:scale-125 hover:shadow-lg hover:shadow-pink-500/50 transition-all duration-300">
-              <HiMail className="text-2xl text-gray-300" />
+            <a href="mailto:kavidu@example.com" className="w-12 h-12 glass-card bg-white/70 dark:bg-white/5 flex items-center justify-center rounded-full hover:bg-pink-50 dark:hover:bg-white/10 hover:scale-125 hover:shadow-lg hover:shadow-pink-500/50 transition-all duration-300 border border-gray-200 dark:border-white/10">
+              <HiMail className="text-2xl text-gray-700 dark:text-gray-300" />
             </a>
           </div>
 
@@ -62,8 +62,8 @@ export default function Footer() {
             </div>
 
             <div className="text-left">
-              <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
+              <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Quick Links</h4>
+              <ul className="space-y-2 text-gray-500 dark:text-gray-400 text-sm">
                 <li><a href="#about" className="hover:text-purple-400 hover:translate-x-1 transition-all duration-200">About</a></li>
                 <li><a href="#projects" className="hover:text-purple-400 hover:translate-x-1 transition-all duration-200">Projects</a></li>
                 <li><a href="#skills" className="hover:text-purple-400 hover:translate-x-1 transition-all duration-200">Skills</a></li>
@@ -72,25 +72,25 @@ export default function Footer() {
             </div>
 
             <div className="text-left">
-              <h4 className="text-lg font-semibold text-white mb-4">Connect</h4>
+              <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Connect</h4>
               <div className="flex gap-4 justify-start">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 glass-card flex items-center justify-center rounded-full hover:bg-white/10 hover:scale-125 hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300">
-                  <FaGithub className="text-xl text-gray-300" />
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 glass-card bg-white/70 dark:bg-white/5 flex items-center justify-center rounded-full hover:bg-purple-50 dark:hover:bg-white/10 hover:scale-125 hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 border border-gray-200 dark:border-white/10">
+                  <FaGithub className="text-xl text-gray-700 dark:text-gray-300" />
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 glass-card flex items-center justify-center rounded-full hover:bg-white/10 hover:scale-125 hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300">
-                  <FaLinkedin className="text-xl text-gray-300" />
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 glass-card bg-white/70 dark:bg-white/5 flex items-center justify-center rounded-full hover:bg-blue-50 dark:hover:bg-white/10 hover:scale-125 hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 border border-gray-200 dark:border-white/10">
+                  <FaLinkedin className="text-xl text-gray-700 dark:text-gray-300" />
                 </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 glass-card flex items-center justify-center rounded-full hover:bg-white/10 hover:scale-125 hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300">
-                  <FaTwitter className="text-xl text-gray-300" />
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 glass-card bg-white/70 dark:bg-white/5 flex items-center justify-center rounded-full hover:bg-cyan-50 dark:hover:bg-white/10 hover:scale-125 hover:shadow-lg hover:shadow-cyan-500/50 transition-all duration-300 border border-gray-200 dark:border-white/10">
+                  <FaTwitter className="text-xl text-gray-700 dark:text-gray-300" />
                 </a>
-                <a href="mailto:kavidu@example.com" className="w-10 h-10 glass-card flex items-center justify-center rounded-full hover:bg-white/10 hover:scale-125 hover:shadow-lg hover:shadow-pink-500/50 transition-all duration-300">
-                  <HiMail className="text-xl text-gray-300" />
+                <a href="mailto:kavidu@example.com" className="w-10 h-10 glass-card bg-white/70 dark:bg-white/5 flex items-center justify-center rounded-full hover:bg-pink-50 dark:hover:bg-white/10 hover:scale-125 hover:shadow-lg hover:shadow-pink-500/50 transition-all duration-300 border border-gray-200 dark:border-white/10">
+                  <HiMail className="text-xl text-gray-700 dark:text-gray-300" />
                 </a>
               </div>
             </div>
           </div>
 
-          <div className="pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
+          <div className="pt-8 border-t border-gray-200 dark:border-gray-800 text-center text-gray-500 dark:text-gray-400 text-sm">
             <p>© {currentYear} Kavidu Hasaranga. All rights reserved.</p>
           </div>
         </div>

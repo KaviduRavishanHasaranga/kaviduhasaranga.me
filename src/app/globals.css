@@ -1,13 +1,16 @@
 @import "tailwindcss";
 
+/* ===================================
+   CSS VARIABLES
+=================================== */
 :root {
   --background: #0a0a1f;
   --foreground: #ededed;
 }
 
 :root.light {
-  --background: #ffffff;
-  --foreground: #1a1a1a;
+  --background: #f0f4ff;
+  --foreground: #1a1a2e;
 }
 
 @theme inline {
@@ -17,6 +20,9 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* ===================================
+   BASE STYLES
+=================================== */
 html {
   scroll-behavior: smooth;
 }
@@ -31,19 +37,17 @@ body {
 }
 
 :root.light body {
-  background: linear-gradient(180deg, #f0f4ff 0%, #e8ebf7 50%, #f0f4ff 100%);
+  background: linear-gradient(180deg, #f0f4ff 0%, #e2e8f8 50%, #f0f4ff 100%);
+  color: #1a1a2e;
 }
 
+/* ===================================
+   GRADIENT ANIMATIONS
+=================================== */
 @keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .gradient-text {
@@ -55,44 +59,425 @@ body {
   animation: gradient 3s ease infinite;
 }
 
+/* ===================================
+   GLASS CARD
+=================================== */
 .glass-card {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  transition: background 0.3s ease, border 0.3s ease;
+  transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
 }
 
 :root.light .glass-card {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
 }
 
+/* ===================================
+   SECTION GRADIENT
+=================================== */
 .section-gradient {
   background: linear-gradient(135deg, rgba(192, 111, 255, 0.1) 0%, rgba(96, 165, 250, 0.1) 100%);
   transition: background 0.3s ease;
 }
 
 :root.light .section-gradient {
-  background: linear-gradient(135deg, rgba(192, 111, 255, 0.05) 0%, rgba(96, 165, 250, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(192, 111, 255, 0.06) 0%, rgba(96, 165, 250, 0.06) 100%);
 }
 
+/* ===================================
+   LIGHT MODE: COLOR OVERRIDES
+   These ensure components with hardcoded Tailwind dark colors adapt properly
+=================================== */
+
+/* Headings */
 :root.light h1,
 :root.light h2,
 :root.light h3,
-:root.light p,
-:root.light span {
-  color: inherit;
+:root.light h4,
+:root.light h5,
+:root.light h6 {
+  color: #1a1a2e;
+}
+
+/* Tailwind text color overrides */
+:root.light .text-white {
+  color: #1a1a2e !important;
+}
+
+:root.light .text-gray-100 {
+  color: #1a1a2e !important;
+}
+
+:root.light .text-gray-200 {
+  color: #2d3748 !important;
 }
 
 :root.light .text-gray-300 {
-  color: #4a5568;
+  color: #374151 !important;
 }
 
 :root.light .text-gray-400 {
-  color: #718096;
+  color: #4b5563 !important;
 }
 
-:root.light .text-white {
-  color: #1a1a1a;
+:root.light .text-gray-500 {
+  color: #6b7280 !important;
+}
+
+:root.light .text-gray-600 {
+  color: #374151 !important;
+}
+
+/* Keep gradient text working */
+:root.light .gradient-text {
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+/* Purple accents */
+:root.light .text-purple-400 {
+  color: #7c3aed !important;
+}
+
+:root.light .text-purple-300 {
+  color: #7c3aed !important;
+}
+
+:root.light .hover\:text-purple-300:hover,
+:root.light .hover\:text-purple-400:hover {
+  color: #6d28d9 !important;
+}
+
+:root.light .text-purple-500 {
+  color: #6d28d9 !important;
+}
+
+:root.light .text-purple-600 {
+  color: #5b21b6 !important;
+}
+
+/* Blue accents */
+:root.light .text-blue-400 {
+  color: #2563eb !important;
+}
+
+:root.light .text-blue-300 {
+  color: #2563eb !important;
+}
+
+:root.light .hover\:text-blue-300:hover,
+:root.light .hover\:text-blue-400:hover {
+  color: #1d4ed8 !important;
+}
+
+/* Pink accents */
+:root.light .text-pink-400 {
+  color: #db2777 !important;
+}
+
+:root.light .text-pink-300 {
+  color: #db2777 !important;
+}
+
+/* ===================================
+   LIGHT MODE: BACKGROUND OVERRIDES
+=================================== */
+
+:root.light .bg-white\/5,
+:root.light .bg-white\/10 {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+:root.light .hover\:bg-white\/10:hover {
+  background-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+:root.light .bg-white\/20 {
+  background-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Translucent purple backgrounds */
+:root.light .bg-purple-500\/10 {
+  background-color: rgba(124, 58, 237, 0.1) !important;
+}
+
+:root.light .bg-purple-500\/20 {
+  background-color: rgba(124, 58, 237, 0.15) !important;
+}
+
+:root.light .text-purple-300 {
+  color: #7c3aed !important;
+}
+
+/* ===================================
+   LIGHT MODE: BORDER OVERRIDES
+=================================== */
+
+:root.light .border-gray-800 {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+:root.light .border-gray-700 {
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+:root.light .border-gray-600 {
+  border-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+:root.light .border-white\/10 {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+:root.light .border-white\/20 {
+  border-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+:root.light .hover\:border-purple-500\/40:hover {
+  border-color: rgba(124, 58, 237, 0.4) !important;
+}
+
+:root.light .hover\:border-purple-500\/50:hover {
+  border-color: rgba(124, 58, 237, 0.5) !important;
+}
+
+/* ===================================
+   LIGHT MODE: NAVBAR SPECIFIC
+=================================== */
+:root.light nav.glass-card {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+:root.bold nav a {
+  color: #4a5568;
+}
+
+:root.light nav a:hover {
+  color: #7c3aed;
+}
+
+/* ===================================
+   LIGHT MODE: BUTTON TEXT
+=================================== */
+:root.light button.glass-card {
+  color: #1a1a2e;
+}
+
+:root.light button.glass-card:hover {
+  color: #1a1a2e;
+}
+
+/* Ensure button text is visible */
+:root.light button {
+  color: inherit;
+}
+
+:root.light .glass-card button {
+  color: #1a1a2e;
+}
+
+/* ===================================
+   LIGHT MODE: FOOTER SPECIFIC
+=================================== */
+:root.light footer {
+  border-top-color: rgba(0, 0, 0, 0.1);
+}
+
+/* ===================================
+   LIGHT MODE: SKILL BADGES
+=================================== */
+:root.light .bg-green-500\/20 {
+  background-color: rgba(16, 185, 129, 0.15) !important;
+}
+
+:root.light .text-green-400 {
+  color: #059669 !important;
+}
+
+:root.light .bg-blue-500\/20 {
+  background-color: rgba(59, 130, 246, 0.15) !important;
+}
+
+:root.light .text-blue-400 {
+  color: #2563eb !important;
+}
+
+:root.light .bg-yellow-500\/20 {
+  background-color: rgba(234, 179, 8, 0.15) !important;
+}
+
+:root.light .text-yellow-400 {
+  color: #d97706 !important;
+}
+
+/* ===================================
+   FLOATING ANIMATION
+=================================== */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ===================================
+   PULSE GLOW ANIMATION
+=================================== */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(192, 111, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(192, 111, 255, 0.6);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* ===================================
+   SHIMMER EFFECT
+=================================== */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ===================================
+   SMOOTH TRANSITIONS
+=================================== */
+.transition-smooth {
+  transition: all 0.4s cubic-bezier(0.25, 0.4, 0.25, 1);
+}
+
+/* ===================================
+   FADE IN ANIMATION
+=================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* ===================================
+   GLOW ON HOVER
+=================================== */
+.hover-glow {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  filter: drop-shadow(0 0 20px rgba(192, 111, 255, 0.5));
+  transform: translateY(-5px);
+}
+
+/* ===================================
+   LIGHT MODE: TIMELINE DOT
+=================================== */
+:root.light .ring-purple-900 {
+  --tw-ring-color: rgba(124, 58, 237, 0.2);
+}
+
+/* ===================================
+   LIGHT MODE: ICON BACKGROUNDS
+=================================== */
+:root.light .bg-blue-500\/10 {
+  background-color: rgba(59, 130, 246, 0.1) !important;
+}
+
+:root.light .bg-blue-50 {
+  background-color: rgba(239, 246, 255, 1) !important;
+}
+
+:root.light .border-blue-500\/20 {
+  border-color: rgba(59, 130, 246, 0.2) !important;
+}
+
+/* ===================================
+   LIGHT MODE: SCROLL BAR
+=================================== */
+:root.light ::-webkit-scrollbar {
+  width: 8px;
+}
+
+:root.light ::-webkit-scrollbar-track {
+  background: #f0f4ff;
+}
+
+:root.light ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+}
+
+:root.light ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* ===================================
+   LIGHT MODE: DARK UTILITY CLASSES OVERRIDE
+   Handle Tailwind's dark: prefixed classes
+=================================== */
+
+/* When in light mode, dark: utility text colors should not apply */
+:root.light .dark\:text-white {
+  color: inherit;
+}
+
+:root.light .dark\:text-gray-300 {
+  color: #374151 !important;
+}
+
+:root.light .dark\:text-gray-400 {
+  color: #4b5563 !important;
+}
+
+:root.light .dark\:text-gray-500 {
+  color: #6b7280 !important;
+}
+
+/* Light mode specific base text colors for better readability */
+:root.light .text-gray-900 {
+  color: #111827 !important;
+}
+
+:root.light p,
+:root.light span,
+:root.light li {
+  color: inherit;
 }

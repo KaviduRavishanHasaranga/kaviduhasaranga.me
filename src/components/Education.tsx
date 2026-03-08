@@ -4,8 +4,8 @@ export default function Education() {
   const education = [
     {
       degree: "Bachelor of Science in Software Engineering",
-      institution: "National School of Business Management",
-      period: "2023 - 2024",
+      institution: "NSBM Green University",
+      period: "2023 - 2027",
       description:
         "Focused on software development, data structures, algorithms, and system design.",
     },
@@ -55,12 +55,12 @@ export default function Education() {
                   className={`w-full md:w-1/2 ${index % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"} pl-20 md:pl-0`}
                 >
                   <div className="glass-card p-6 hover:bg-white/10 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/30 transition-all duration-300 cursor-default">
-                    <h3 className="text-xl font-bold text-white mb-2">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                       {edu.degree}
                     </h3>
                     <p className="text-purple-400 mb-2">{edu.institution}</p>
-                    <p className="text-sm text-gray-400 mb-4">{edu.period}</p>
-                    <p className="text-gray-300">{edu.description}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">{edu.period}</p>
+                    <p className="text-gray-600 dark:text-gray-300">{edu.description}</p>
                   </div>
                 </div>
 
