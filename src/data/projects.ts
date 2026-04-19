@@ -1,8 +1,16 @@
 export const projects = [
   {
-    title: "Inventory Management System",
-    description: "Role-based inventory system with audit trail and reporting.",
-    tech: ["NestJS", "MySQL", "RBAC"],
-    github: "https://github.com/...",
+    title: "Optimax Opticle — Billing System",
+    description: "A full-stack billing and invoice management system for an optical shop. Built with React, Node.js, Express, PostgreSQL, and Prisma ORM..",
+    tech: ["React", "Node.js", "Express", "PostgreSQL", "Prisma ORM"],
+    github: "https://github.com/KaviduRavishanHasaranga/optical-shop-bill-system.git",
+    liveDemo: "https://optimaxbill.app/login",
+  },
+  {
+    title: "RiderWatch — Riders Net Profit Watch App",
+    description: "A fullstack mobile & web application for delivery riders to track trips, monitor earnings, and analyse net profit. Built with Flutter (frontend) and Node.js / Express (backend API) backed by SQLite.",
+    tech: ["Flutter", "Node.js", "Express", "SQLite"],
+    github: "https://github.com/KaviduRavishanHasaranga/RiderWatch.git",
+    liveDemo: "",
   },
 ];

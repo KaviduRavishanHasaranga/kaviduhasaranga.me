@@ -37,14 +37,16 @@ export default function Projects() {
                 </div>
                 
                 <div className="flex gap-4">
-                  <a href={project.github} className="text-purple-400 hover:text-purple-300 hover:underline hover:scale-110 transition-all duration-200 flex items-center gap-2">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 hover:underline hover:scale-110 transition-all duration-200 flex items-center gap-2">
                     <span className="group-hover:scale-125 transition-transform duration-200">🔗</span>
                     <span>GitHub</span>
                   </a>
-                  <button className="text-blue-400 hover:text-blue-300 hover:underline hover:scale-110 transition-all duration-200 flex items-center gap-2">
-                    <span>🚀</span>
-                    <span>Live Demo</span>
-                  </button>
+                  {project.liveDemo && (
+                    <a href={project.liveDemo} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 hover:underline hover:scale-110 transition-all duration-200 flex items-center gap-2">
+                      <span>🚀</span>
+                      <span>Live Demo</span>
+                    </a>
+                  )}
                 </div>
               </div>
             </ScrollAnimation>
