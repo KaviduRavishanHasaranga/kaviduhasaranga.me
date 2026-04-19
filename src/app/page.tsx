@@ -22,8 +22,7 @@ export default function Home() {
       <Education />
       <Skills />
       <Projects />
-      <Github />
-      <Community />
+      <Github />      
       <Passions />
       <Roadmap />
       <Contact />

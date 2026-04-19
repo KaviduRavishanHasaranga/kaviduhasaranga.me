@@ -1,13 +1,19 @@
 #!/bin/bash
+set -e
 
-# Update dependencies
-npm install
+echo "🚀 Starting deployment..."
+cd /var/www/kaviduhasaranga.me
 
-# Build the project
+echo "📥 Pulling latest changes from GitHub..."
+git pull origin main
+
+echo "📦 Installing dependencies..."
+npm ci --production=false
+
+echo "🔨 Building Next.js app..."
 npm run build
 
-# Restart the PM2 process
-pm2 restart kaviduhasaranga-me || pm2 start ecosystem.config.js
+echo "♻️ Restarting PM2..."
+pm2 restart kaviduhasaranga-me
 
-# Save PM2 list
-pm2 save
+echo "✅ Deployment complete!"

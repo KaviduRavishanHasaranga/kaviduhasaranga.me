@@ -9,11 +9,49 @@ export default function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+
+      // Get all sections
+      const sections = navLinks.map(link => {
+        const element = document.querySelector(link.href);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return {
+            id: link.href,
+            top: rect.top,
+            bottom: rect.bottom,
+            height: rect.height
+          };
+        }
+        return null;
+      }).filter(Boolean);
+
+      // Find which section is currently in view
+      // A section is active if its top is above the middle of the viewport
+      // and its bottom is below the middle
+      const middle = window.innerHeight / 2;
+      
+      for (const section of sections) {
+        if (section && section.top <= middle && section.bottom >= middle) {
+          setActiveSection(section.id);
+          break;
+        }
+      }
+
+      // If no section is in the middle, check which one is closest to top
+      if (!sections.some(s => s && s.top <= middle && s.bottom >= middle)) {
+        const topSection = sections.find(s => s && s.top > 0);
+        if (topSection) {
+          setActiveSection(topSection.id);
+        }
+      }
     };
+
+    handleScroll(); // Check on mount
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -26,7 +64,7 @@ export default function Navbar() {
     { href: "#skills", label: "Skills" },
     { href: "#projects", label: "Projects" },
     { href: "#github", label: "GitHub" },
-    { href: "#research", label: "Research" },
+    { href: "#passions", label: "Passions" },
     { href: "#roadmap", label: "Roadmap" },
     { href: "#contact", label: "Contact" },
     { href: "#blog", label: "Blog" },
@@ -56,12 +94,15 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05, duration: 0.3 }}
-                className="hover:text-purple-400 transition relative group"
+                className={`hover:text-purple-400 transition relative group ${
+                  activeSection === link.href ? 'text-purple-400' : ''
+                }`}
               >
                 {link.label}
                 <motion.span
                   className="absolute -bottom-1 left-0 h-0.5 bg-linear-to-r from-purple-400 to-pink-400"
-                  initial={{ width: 0 }}
+                  initial={{ width: activeSection === link.href ? "100%" : 0 }}
+                  animate={{ width: activeSection === link.href ? "100%" : 0 }}
                   whileHover={{ width: "100%" }}
                   transition={{ duration: 0.3 }}
                 />
@@ -137,7 +178,9 @@ export default function Navbar() {
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: index * 0.05 }}
                   onClick={() => setIsMenuOpen(false)}
-                  className="hover:text-purple-400 transition py-2 border-b border-gray-200/70 dark:border-gray-800/50"
+                  className={`hover:text-purple-400 transition py-2 border-b border-gray-200/70 dark:border-gray-800/50 ${
+                    activeSection === link.href ? 'text-purple-400 font-semibold' : ''
+                  }`}
                 >
                   {link.label}
                 </motion.a>

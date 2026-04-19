@@ -56,11 +56,11 @@ export default function PageLoader({ isLoading }: Props) {
               />
               
               {/* Name */}
-              <motion.h1
+              <motion.h1 
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
-                className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white"
+                className="text-5xl md:text-7xl font-bold text-gray-900 dark:text-white"
               >
                 Kavidu <span className="gradient-text">Hasaranga</span>
               </motion.h1>
@@ -73,7 +73,7 @@ export default function PageLoader({ isLoading }: Props) {
               transition={{ delay: 0.2, duration: 0.5 }}
               className="flex items-center gap-2"
             >
-              <span className="text-gray-600 dark:text-gray-400 text-sm font-medium">
+              <span className="text-gray-600 dark:text-gray-400 text-lg font-medium">
                 Loading
               </span>
               <motion.span className="text-purple-600 dark:text-purple-400 font-bold text-lg min-w-12 text-center">
@@ -82,7 +82,7 @@ export default function PageLoader({ isLoading }: Props) {
             </motion.div>
 
             {/* Progress Bar */}
-            <div className="h-2 w-64 bg-gray-200 dark:bg-white/10 rounded-full overflow-hidden">
+            <div className="h-2 w-full bg-gray-200 dark:bg-white/10 rounded-full overflow-hidden">
               <motion.div
                 style={{ width: progressWidth }}
                 className="h-full bg-linear-to-r from-pink-500 via-purple-600 to-purple-600"
