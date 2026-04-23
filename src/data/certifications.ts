@@ -45,9 +45,9 @@ export const certifications: Certification[] = [
 
 export const achievements: Achievement[] = [
   {
-    title: "Add your achievement here",
-    description: "Brief description of the achievement.",
-    date: "2024",
-    badge: "🏆",
+    title: "",
+    description: "",
+    date: "",
+    badge: "",
   },
 ];
