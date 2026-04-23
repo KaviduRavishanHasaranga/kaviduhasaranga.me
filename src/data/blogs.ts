@@ -31,7 +31,7 @@ export const blogPosts: BlogPost[] = [
     category: "Backend",
     tags: ["NestJS", "TypeORM", "REST API", "TypeScript"],
     featured: true,
-    emoji: "🚀",
+    emoji: "",
     content: [
       {
         type: "intro",
@@ -236,7 +236,7 @@ app.useGlobalInterceptors(new TransformInterceptor());`,
     category: "Blockchain",
     tags: ["Solidity", "Ethereum", "Web3", "ethers.js"],
     featured: true,
-    emoji: "⛓️",
+    emoji: "",
     content: [
       {
         type: "intro",
@@ -270,7 +270,7 @@ app.useGlobalInterceptors(new TransformInterceptor());`,
     category: "AI & ML",
     tags: ["Python", "scikit-learn", "Machine Learning", "Pipelines"],
     featured: false,
-    emoji: "🤖",
+    emoji: "",
   },
   {
     id: "4",
@@ -282,7 +282,7 @@ app.useGlobalInterceptors(new TransformInterceptor());`,
     category: "Mobile",
     tags: ["Flutter", "Riverpod", "Bloc", "Dart"],
     featured: false,
-    emoji: "📱",
+    emoji: "",
   },
   {
     id: "5",
@@ -294,7 +294,7 @@ app.useGlobalInterceptors(new TransformInterceptor());`,
     category: "DevOps",
     tags: ["Docker", "Nginx", "CI/CD", "DevOps"],
     featured: false,
-    emoji: "🐳",
+    emoji: "",
   },
   {
     id: "6",
@@ -306,7 +306,7 @@ app.useGlobalInterceptors(new TransformInterceptor());`,
     category: "Security",
     tags: ["RBAC", "Security", "NestJS", "MySQL"],
     featured: false,
-    emoji: "🔐",
+    emoji: "",
   },
 ];
 

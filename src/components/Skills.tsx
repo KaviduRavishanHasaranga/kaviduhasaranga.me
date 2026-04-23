@@ -4,7 +4,7 @@ import ScrollAnimation from './ScrollAnimation'
 
 export default function Skills() {
   return (
-    <section className="py-20 px-8" id="skills">
+    <section className="py-20 px-8 section-gradient" id="skills">
       <div className="max-w-6xl mx-auto">
         <ScrollAnimation>
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 mt-8">
@@ -22,21 +22,17 @@ export default function Skills() {
             >
               <div className="glass-card p-6 hover:bg-white/10 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/30 transition-all duration-300 group cursor-default h-full">
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="text-4xl group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">{skillGroup.icon}</span>
+                  {/*span className="text-4xl group-hover:scale-125 group-hover:rotate-12 transition-all duration-300">{skillGroup.icon}</span*/}
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white">{skillGroup.category}</h3>
                 </div>
-                <div className="space-y-3">
+                <div className="flex flex-wrap gap-2">
                   {skillGroup.items.map((skill, idx) => (
-                    <div key={idx} className="flex justify-between items-center">
-                      <span className="text-gray-600 dark:text-gray-300">{skill.name}</span>
-                      <span className={`text-xs px-2 py-1 rounded-full ${
-                        skill.level === 'Advanced' ? 'bg-green-500/20 text-green-400' :
-                        skill.level === 'Intermediate' ? 'bg-blue-500/20 text-blue-400' :
-                        'bg-yellow-500/20 text-yellow-400'
-                      }`}>
-                        {skill.level}
-                      </span>
-                    </div>
+                    <span
+                      key={idx}
+                      className="text-sm px-3 py-1.5 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20 hover:bg-purple-500/20 transition-colors duration-200"
+                    >
+                      {skill.name}
+                    </span>
                   ))}
                 </div>
               </div>

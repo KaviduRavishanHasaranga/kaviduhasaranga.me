@@ -29,7 +29,7 @@ export default function About() {
           <div className="space-y-6 md:col-span-2">
             <ScrollAnimation delay={0.3}>
               <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed text-center md:text-left">
-                I&apos;m an Software Engineering undergraduate at NSBM Green University with a deep passion for blockchain technology and
+                Hi,I&apos;m an Software Engineering undergraduate at NSBM Green University with a deep passion for blockchain technology and
                 decentralized systems. Since 2020, I&apos;ve been actively immersed in
                 the cryptocurrency ecosystem—researching, building, and educating
                 others.

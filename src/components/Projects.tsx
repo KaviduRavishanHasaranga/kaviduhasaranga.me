@@ -41,6 +41,12 @@ export default function Projects() {
                     <span className="group-hover:scale-125 transition-transform duration-200">🔗</span>
                     <span>GitHub</span>
                   </a>
+                  {project.github2 && (
+                    <a href={project.github2} target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 hover:underline hover:scale-110 transition-all duration-200 flex items-center gap-2">
+                      <span className="group-hover:scale-125 transition-transform duration-200">🔗</span>
+                      <span>GitHub 2</span>
+                    </a>
+                  )}
                   {project.liveDemo && (
                     <a href={project.liveDemo} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 hover:underline hover:scale-110 transition-all duration-200 flex items-center gap-2">
                       <span>🚀</span>

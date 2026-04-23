@@ -1,63 +1,97 @@
 export const skills = [
   {
-    category: "Frontend",
-    icon: "💻",
+    category: "Languages",
+    icon: "",
     items: [
-      { name: "React", level: "Advanced" },
-      { name: "Next.js", level: "Advanced" },
-      { name: "TypeScript", level: "Intermediate" },
-      { name: "Tailwind CSS", level: "Advanced" },
-      { name: "JavaScript", level: "Advanced" },
+      { name: "JavaScript" },
+      { name: "TypeScript" },
+      { name: "Python" },
+      { name: "Java" },
+      { name: "Dart" },
+      { name: "C/C++" },
+      { name: "SQL" },
+      { name: "PHP" },
+      { name: "HTML5 & CSS3" },
     ]
   },
   {
-    category: "Backend",
-    icon: "⚙️",
+    category: "Frontend & Mobile",
+    icon: "",
     items: [
-      { name: "Node.js", level: "Advanced" },
-      { name: "NestJS", level: "Intermediate" },
-      { name: "Express", level: "Advanced" },
-      { name: "Java", level: "Intermediate" },
-      { name: "Python", level: "Intermediate" },
+      { name: "React" },
+      { name: "Flutter" },
+      { name: "Tailwind CSS" },
+      { name: "Vite" },
     ]
   },
   {
-    category: "Database",
-    icon: "🗄️",
+    category: "Backend & Databases",
+    icon: "",
     items: [
-      { name: "MySQL", level: "Advanced" },
-      { name: "PostgreSQL", level: "Intermediate" },
-      { name: "MongoDB", level: "Intermediate" },
-      { name: "Redis", level: "Beginner" },
-      {name:"SQlite",level:"Advanced"}
+      { name: "Node.js" },
+      { name: "Express" },
+      { name: "REST APIs" },
+      { name: "ASP.NET" },
+      { name: "Java Servlets" },
+      { name: "MongoDB" },
+      { name: "SQLite" },
+      { name: "PostgreSQL" },
+
     ]
   },
   {
-    category: "DevOps & Tools",
-    icon: "🛠️",
+    category: "IoT & Hardware",
+    icon: "",
     items: [
-      { name: "Git", level: "Advanced" },
-      { name: "Docker", level: "Intermediate" },
-      { name: "Linux", level: "Intermediate" },
-      { name: "CI/CD", level: "Beginner" },
+      { name: "Arduino" }
+    ]
+  },
+  {
+    category: "Tools & Infrastructure",
+    icon: "",
+    items: [
+      { name: "Git & GitHub" },
+      { name: "Ubuntu / Linux" },
+      { name: "Docker" },
+      { name: "Digital Ocean" },
+      { name: "Microsoft Azure" },
+      { name: "VS Code" },
+      { name: "Postman" },
+      { name: "Android Studio" }
     ]
   },
   {
     category: "UI/UX Design",
-    icon: "🎨",
+    icon: "",
     items: [
-      { name: "Figma", level: "Intermediate" },
-      { name: "Adobe XD", level: "Beginner" },
-      { name: "Responsive Design", level: "Advanced" },
+      { name: "Figma" },
+      { name: "Adobe XD" },
+      { name: "Responsive Design" },
     ]
   },
   {
-    category: "Other",
-    icon: "🚀",
+    category: "APIs & Services",
+    icon: "",
     items: [
-      { name: "REST APIs", level: "Advanced" },
-      { name: "GraphQL", level: "Beginner" },
-      { name: "Agile/Scrum", level: "Intermediate" },
+      { name: "Gemini API" },
+      { name: "Google Maps API" },
+      { name: "Firebase" },
+      { name: "OpenAI API" },
+      { name: "Groq" },
+      { name: "Tavily Search API" },
+    ]
+  },
+  {
+    category: "AI Tools",
+    icon: "",
+    items: [
+      { name: "Google Antigravity" },
+      { name: "GitHub Copilot" },
+      { name: "ChatGPT" },
+      { name: "Claude" },
+      { name: "Gemini" },
+      { name: "Midjourney" },
+      { name: "Perplexity" },
     ]
   }
 ];

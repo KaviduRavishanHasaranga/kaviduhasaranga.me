@@ -62,10 +62,10 @@ export default function Navbar() {
     { href: "#about", label: "About" },
     { href: "#education", label: "Education" },
     { href: "#skills", label: "Skills" },
+    { href: "#certifications", label: "Certifications" },
     { href: "#projects", label: "Projects" },
     { href: "#github", label: "GitHub" },
     { href: "#passions", label: "Passions" },
-    { href: "#roadmap", label: "Roadmap" },
     { href: "#contact", label: "Contact" },
     { href: "#blog", label: "Blog" },
   ];

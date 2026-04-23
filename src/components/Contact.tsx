@@ -5,7 +5,7 @@ import { HiMail, HiPhone, HiLocationMarker } from 'react-icons/hi'
 
 export default function Contact() {
   return (
-    <section className="py-20 px-4 md:px-8" id="contact">
+    <section className="py-20 px-8" id="contact">
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-16">

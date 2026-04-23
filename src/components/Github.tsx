@@ -62,7 +62,7 @@ export default function Github() {
         
         <div className="grid md:grid-cols-2 gap-8">
           <div className="glass-card p-8 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/30 transition-all duration-300">
-            <h3 className="text-2xl font-bold text-white mb-4">📊 GitHub Activity</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">GitHub Activity</h3>
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <span className="text-gray-300">Repositories</span>
@@ -89,7 +89,7 @@ export default function Github() {
           </div>
           
           <div className="glass-card p-8 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/30 transition-all duration-300">
-            <h3 className="text-2xl font-bold text-white mb-4">🤝 Open Source</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">Open Source</h3>
             <p className="text-gray-300 mb-4">
               I actively contribute to open source projects and believe in the power of community-driven development.
             </p>

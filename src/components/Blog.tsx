@@ -76,7 +76,7 @@ export default function Blog() {
         onClick={(e) => handleClick(e, toastKey, post)}
         className={className}
       >
-        {isComingSoon ? '✨ Coming Soon' : 'Read more →'}
+        {isComingSoon ? 'Coming Soon' : 'Read more →'}
       </button>
     )
   }

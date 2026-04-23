@@ -33,7 +33,7 @@ export default function Education() {
   ];
 
   return (
-    <section className="py-20 px-8 section-gradient" id="education">
+    <section className="py-20 px-8" id="education">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 mt-8">
           <span className="gradient-text">Education</span>

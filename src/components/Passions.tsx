@@ -25,7 +25,7 @@ export default function Passions() {
   ]
 
   return (
-    <section className="py-20 px-8" id="passions">
+    <section className="py-20 px-8 section-gradient" id="passions">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold text-center mb-16">
           Passions & <span className="gradient-text">Experiences</span>
