@@ -4,6 +4,10 @@ set -e
 echo "🚀 Starting deployment..."
 cd /var/www/kaviduhasaranga.me
 
+echo "🧹 Cleaning up local changes..."
+git restore . || true
+git clean -fd || true
+
 echo "📥 Pulling latest changes from GitHub..."
 git pull origin main
 
