@@ -1,4 +1,7 @@
+'use client'
+
 import React from 'react'
+import Link from 'next/link'
 import { projects } from '@/data/projects'
 import ScrollAnimation from './ScrollAnimation'
 
@@ -8,62 +11,129 @@ export default function Projects() {
       <div className="max-w-6xl mx-auto">
         <ScrollAnimation>
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 mt-8">
-            Projects & <span className="gradient-text">Showcase</span>
+            Projects &amp; <span className="gradient-text">Showcase</span>
           </h2>
           <p className="text-center text-gray-400 mb-16">Some of my recent work</p>
         </ScrollAnimation>
-        
-        <div className="grid md:grid-cols-2 gap-8">
+
+        <div className="grid md:grid-cols-3 gap-6">
           {projects.map((project, index) => (
-            <ScrollAnimation 
-              key={index} 
+            <ScrollAnimation
+              key={index}
               delay={index * 0.15}
               direction={index % 2 === 0 ? 'left' : 'right'}
             >
-              <div className="glass-card p-6 hover:bg-white/10 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/30 hover:border-purple-500/50 border border-transparent transition-all duration-300 group h-full">
-                <div className="mb-4">
-                  <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-purple-400 transition">
+              <div className="bg-white/5 border border-white/10 hover:border-white/20 hover:shadow-xl hover:shadow-black/30 transition-all duration-300 group h-full flex flex-col rounded-2xl overflow-hidden">
+
+                {/* ── Screenshot area ── */}
+                <div
+                  className="mx-4 mt-4 rounded-xl overflow-hidden bg-gray-900 border border-white/10 shrink-0"
+                  style={{ height: '185px' }}
+                >
+                  <Link
+                  id={`project-details-${project.slug}`}
+                  href={`/projects/${project.slug}`}
+                  className="text-sm font-semibold text-white hover:text-purple-300 transition-colors duration-200 whitespace-nowrap"
+                  >
+                  {project.coverImage ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={project.coverImage}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <span className="text-5xl opacity-20">🗂️</span>
+                    </div>
+                  )}
+                  </Link>
+                </div>
+
+                {/* ── Card body ── */}
+                <div className="flex flex-col flex-1 px-5 pt-4 pb-5">
+                  {/* Title */}
+                  <Link
+                  id={`project-details-${project.slug}`}
+                  href={`/projects/${project.slug}`}
+                  className="text-sm font-semibold text-white hover:text-purple-300 transition-colors duration-200 whitespace-nowrap"
+                  >
+                  <h3 className="text-[17px] font-bold text-white leading-snug mb-2">
                     {project.title}
                   </h3>
-                  <p className="text-gray-300 mb-4">{project.description}</p>
-                </div>
-                
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tech.map((tech, idx) => (
-                    <span key={idx} className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm hover:bg-purple-500/30 hover:scale-110 transition-all duration-200">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                
-                <div className="flex gap-4">
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 hover:underline hover:scale-110 transition-all duration-200 flex items-center gap-2">
-                    <span className="group-hover:scale-125 transition-transform duration-200">🔗</span>
-                    <span>GitHub</span>
-                  </a>
-                  {project.github2 && (
-                    <a href={project.github2} target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:text-purple-300 hover:underline hover:scale-110 transition-all duration-200 flex items-center gap-2">
-                      <span className="group-hover:scale-125 transition-transform duration-200">🔗</span>
-                      <span>GitHub 2</span>
+                  </Link>
+
+                  {/* Description */}
+                  <p className="text-gray-400 text-sm leading-relaxed flex-1 mb-4 line-clamp-3">
+                    {project.description}
+                  </p>
+
+                  {/* ── Tech tags ── */}
+                  <div className="flex flex-wrap gap-1.5 mb-5">
+                    {project.tech.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="px-2.5 py-0.5 rounded-full text-xs border border-white/15 text-gray-300 bg-transparent"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* ── Footer links ── */}
+                  <div className="flex items-center gap-4 pt-4 border-t border-white/8 flex-wrap">
+                    <Link
+                      id={`project-details-${project.slug}`}
+                      href={`/projects/${project.slug}`}
+                      className="text-sm font-semibold text-white hover:text-purple-300 transition-colors duration-200 whitespace-nowrap"
+                    >
+                      View project →
+                    </Link>
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-blue-400 hover:text-blue-300 transition-colors duration-200"
+                    >
+                      GitHub
                     </a>
-                  )}
-                  {project.liveDemo && (
-                    <a href={project.liveDemo} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300 hover:underline hover:scale-110 transition-all duration-200 flex items-center gap-2">
-                      <span>🚀</span>
-                      <span>Live Demo</span>
-                    </a>
-                  )}
+                    {project.github2 && (
+                      <a
+                        href={project.github2}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-blue-400 hover:text-blue-300 transition-colors duration-200"
+                      >
+                        GitHub 2
+                      </a>
+                    )}
+                    {project.liveDemo && (
+                      <a
+                        href={project.liveDemo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-blue-400 hover:text-blue-300 transition-colors duration-200"
+                      >
+                        Live demo
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             </ScrollAnimation>
           ))}
         </div>
-        
+
         <ScrollAnimation delay={0.4}>
           <div className="text-center mt-12">
-            <button className="glass-card px-8 py-3 rounded-full font-semibold hover:bg-white/10 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300">
+            <a
+              href="https://github.com/KaviduRavishanHasaranga"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass-card px-8 py-3 rounded-full font-semibold hover:bg-white/10 hover:scale-105 hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300 inline-block"
+            >
               View All Projects →
-            </button>
+            </a>
           </div>
         </ScrollAnimation>
       </div>

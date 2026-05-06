@@ -71,7 +71,7 @@ export default function Certifications() {
                       >
                         <span>🔑</span>
                         <span className="font-mono text-xs bg-gray-100 dark:bg-white/5 px-2 py-0.5 rounded text-gray-700 dark:text-gray-300 group-hover/copy:bg-purple-500/20 group-hover/copy:text-purple-300 transition-colors duration-200">
-                          {copiedCode === cert.verificationCode ? '✅ Copied!' : cert.verificationCode}
+                          {copiedCode === cert.verificationCode ? 'Copied!' : cert.verificationCode}
                         </span>
                         <span className="text-gray-400 dark:text-gray-600 group-hover/copy:text-purple-400 transition-colors duration-200 text-xs">
                           {copiedCode === cert.verificationCode ? '' : '⧉'}

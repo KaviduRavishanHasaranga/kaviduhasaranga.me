@@ -1,11 +1,3 @@
-export interface ContentSection {
-  type: 'intro' | 'heading' | 'paragraph' | 'code' | 'list' | 'callout' | 'subheading';
-  text?: string;
-  language?: string;
-  items?: string[];
-  variant?: 'info' | 'tip' | 'warning';
-}
-
 export interface BlogPost {
   id: string;
   title: string;
@@ -17,7 +9,7 @@ export interface BlogPost {
   featured: boolean;
   emoji: string;
   link?: string;
-  content?: ContentSection[];
+  markdownFile?: string;
 }
 
 export const blogPosts: BlogPost[] = [
@@ -32,199 +24,7 @@ export const blogPosts: BlogPost[] = [
     tags: ["NestJS", "TypeORM", "REST API", "TypeScript"],
     featured: true,
     emoji: "",
-    content: [
-      {
-        type: "intro",
-        text: "NestJS has become my go-to framework for building production-ready backend services. Its opinionated structure, native TypeScript support, and Angular-inspired module system make it incredibly powerful for teams. In this post I'll walk through the architectural decisions I make when scaffolding a new NestJS + TypeORM project.",
-      },
-      {
-        type: "heading",
-        text: "Why NestJS?",
-      },
-      {
-        type: "paragraph",
-        text: "Express is flexible — sometimes too flexible. Without conventions, large codebases devolve into spaghetti. NestJS gives you dependency injection, decorators, modules, and a clear layered architecture out of the box. Every controller, service, and repository knows exactly where it lives.",
-      },
-      {
-        type: "callout",
-        variant: "tip",
-        text: "NestJS is fully compatible with Express under the hood. You can drop down to raw Express when you need to, but you rarely will.",
-      },
-      {
-        type: "heading",
-        text: "Project Structure",
-      },
-      {
-        type: "paragraph",
-        text: "I organise by domain, not by type. Each feature (e.g. users, products, orders) gets its own module folder:",
-      },
-      {
-        type: "code",
-        language: "bash",
-        text: `src/
-├── users/
-│   ├── users.module.ts
-│   ├── users.controller.ts
-│   ├── users.service.ts
-│   ├── users.entity.ts
-│   └── dto/
-│       ├── create-user.dto.ts
-│       └── update-user.dto.ts
-├── auth/
-│   ├── auth.module.ts
-│   ├── auth.service.ts
-│   ├── jwt.strategy.ts
-│   └── guards/
-│       └── jwt-auth.guard.ts
-└── app.module.ts`,
-      },
-      {
-        type: "heading",
-        text: "Setting Up TypeORM",
-      },
-      {
-        type: "paragraph",
-        text: "Install the required packages and configure the TypeORM module in AppModule. I always use environment variables for credentials and enable synchronize only in development:",
-      },
-      {
-        type: "code",
-        language: "typescript",
-        text: `// app.module.ts
-@Module({
-  imports: [
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: process.env.DB_HOST,
-      port: +process.env.DB_PORT,
-      username: process.env.DB_USER,
-      password: process.env.DB_PASS,
-      database: process.env.DB_NAME,
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: process.env.NODE_ENV !== 'production',
-    }),
-    UsersModule,
-    AuthModule,
-  ],
-})
-export class AppModule {}`,
-      },
-      {
-        type: "heading",
-        text: "Defining Entities",
-      },
-      {
-        type: "paragraph",
-        text: "Entities are TypeScript classes decorated with @Entity(). I always extend a BaseEntity class that holds common columns to keep things DRY:",
-      },
-      {
-        type: "code",
-        language: "typescript",
-        text: `// base.entity.ts
-export abstract class BaseEntity {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
-
-  @CreateDateColumn()
-  createdAt: Date;
-
-  @UpdateDateColumn()
-  updatedAt: Date;
-}
-
-// users/users.entity.ts
-@Entity('users')
-export class User extends BaseEntity {
-  @Column({ unique: true })
-  email: string;
-
-  @Column()
-  passwordHash: string;
-
-  @Column({ default: 'user' })
-  role: string;
-}`,
-      },
-      {
-        type: "heading",
-        text: "Guards & Role-Based Access",
-      },
-      {
-        type: "paragraph",
-        text: "NestJS guards are the cleanest way to protect routes. Here's a minimal JWT guard that also applies role checks via a custom @Roles() decorator:",
-      },
-      {
-        type: "code",
-        language: "typescript",
-        text: `// guards/roles.guard.ts
-@Injectable()
-export class RolesGuard implements CanActivate {
-  constructor(private reflector: Reflector) {}
-
-  canActivate(context: ExecutionContext): boolean {
-    const required = this.reflector.get<string[]>('roles', context.getHandler());
-    if (!required) return true;
-
-    const { user } = context.switchToHttp().getRequest();
-    return required.includes(user.role);
-  }
-}
-
-// Then on your controller:
-@UseGuards(JwtAuthGuard, RolesGuard)
-@Roles('admin')
-@Delete(':id')
-remove(@Param('id') id: string) {
-  return this.usersService.remove(id);
-}`,
-      },
-      {
-        type: "heading",
-        text: "Interceptors for Response Transformation",
-      },
-      {
-        type: "paragraph",
-        text: "I use a global response interceptor to wrap every API response in a consistent shape, making frontend integration predictable:",
-      },
-      {
-        type: "code",
-        language: "typescript",
-        text: `@Injectable()
-export class TransformInterceptor<T>
-  implements NestInterceptor<T, Response<T>> {
-  intercept(context: ExecutionContext, next: CallHandler): Observable<Response<T>> {
-    return next.handle().pipe(
-      map(data => ({
-        success: true,
-        data,
-        timestamp: new Date().toISOString(),
-      })),
-    );
-  }
-}
-
-// Register globally in main.ts:
-app.useGlobalInterceptors(new TransformInterceptor());`,
-      },
-      {
-        type: "heading",
-        text: "Key Takeaways",
-      },
-      {
-        type: "list",
-        items: [
-          "Organise by domain, not by layer — every feature is self-contained",
-          "Use environment variables for all config; never hardcode credentials",
-          "Synchronize: true is only for development — use migrations in production",
-          "Guards + Reflector metadata is the cleanest RBAC pattern in NestJS",
-          "A global interceptor keeps API responses uniform across all endpoints",
-        ],
-      },
-      {
-        type: "callout",
-        variant: "info",
-        text: "All code samples in this post are simplified for clarity. In a real project you'd also add validation pipes (class-validator), exception filters, and a Swagger module for automatic API documentation.",
-      },
-    ],
+    markdownFile: "1.md",
   },
   {
     id: "2",
@@ -237,28 +37,7 @@ app.useGlobalInterceptors(new TransformInterceptor());`,
     tags: ["Solidity", "Ethereum", "Web3", "ethers.js"],
     featured: true,
     emoji: "",
-    content: [
-      {
-        type: "intro",
-        text: "Blockchain has become my go-to framework for building production-ready backend services. Its opinionated structure, native TypeScript support, and Angular-inspired module system make it incredibly powerful for teams. In this post I'll walk through the architectural decisions I make when scaffolding a new NestJS + TypeORM project.",
-      },
-      {
-        type: "heading",
-        text: "Why Blockchain?",
-      },
-      {
-        type: "paragraph",
-        text: "Blockchain is a distributed ledger technology that enables secure, transparent, and tamper-proof transactions. It has applications in various industries, including finance, supply chain management, and healthcare.",
-      },
-      {
-        type: "heading",
-        text: "Why Blockchain?",
-      },
-      {
-        type: "paragraph",
-        text: "Blockchain is a distributed ledger technology that enables secure, transparent, and tamper-proof transactions. It has applications in various industries, including finance, supply chain management, and healthcare.",
-      },
-    ],
+    markdownFile: "2.md",
   },
   {
     id: "3",
@@ -271,6 +50,7 @@ app.useGlobalInterceptors(new TransformInterceptor());`,
     tags: ["Python", "scikit-learn", "Machine Learning", "Pipelines"],
     featured: false,
     emoji: "",
+    markdownFile: "3.md",
   },
   {
     id: "4",
@@ -283,6 +63,7 @@ app.useGlobalInterceptors(new TransformInterceptor());`,
     tags: ["Flutter", "Riverpod", "Bloc", "Dart"],
     featured: false,
     emoji: "",
+    markdownFile: "4.md",
   },
   {
     id: "5",
@@ -295,6 +76,7 @@ app.useGlobalInterceptors(new TransformInterceptor());`,
     tags: ["Docker", "Nginx", "CI/CD", "DevOps"],
     featured: false,
     emoji: "",
+    markdownFile: "5.md",
   },
   {
     id: "6",
@@ -307,6 +89,7 @@ app.useGlobalInterceptors(new TransformInterceptor());`,
     tags: ["RBAC", "Security", "NestJS", "MySQL"],
     featured: false,
     emoji: "",
+    markdownFile: "6.md",
   },
 ];
 

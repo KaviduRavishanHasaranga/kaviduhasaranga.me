@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation'
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
-  const isBlogPost = pathname?.startsWith('/blog/')
+  const isBlogPost = pathname?.startsWith('/blog/') || pathname?.startsWith('/projects/')
   const [isLoading, setIsLoading] = useState(true)
   
   useEffect(() => {

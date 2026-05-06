@@ -2,98 +2,19 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { BlogPost, ContentSection } from '@/data/blogs'
+import { BlogPost } from '@/data/blogs'
 import { useTheme } from '@/context/ThemeContext'
 import { motion } from 'framer-motion'
+import MarkdownRenderer from './MarkdownRenderer'
 
 interface Props {
   post: BlogPost
+  markdownContent: string
 }
 
-function CodeBlock({ text, language }: { text: string; language?: string }) {
-  return (
-    <div className="my-6 rounded-xl overflow-hidden border border-gray-200/30 dark:border-white/10">
-      {language && (
-        <div className="flex items-center justify-between px-4 py-2 bg-gray-100 dark:bg-white/5 border-b border-gray-200/30 dark:border-white/10">
-          <span className="text-xs font-mono text-purple-600 dark:text-purple-300">{language}</span>
-          <span className="w-2 h-2 rounded-full bg-purple-500 dark:bg-purple-400/60" />
-        </div>
-      )}
-      <pre className="overflow-x-auto p-5 bg-gray-100 dark:bg-black/40 text-sm leading-relaxed">
-        <code className="font-mono text-gray-800 dark:text-gray-200 whitespace-pre">{text}</code>
-      </pre>
-    </div>
-  )
-}
-
-function Callout({ text, variant = 'info' }: { text: string; variant?: ContentSection['variant'] }) {
-  const styles = {
-    info:    { border: 'border-blue-500/40',   bg: 'bg-blue-50 dark:bg-blue-500/10',   icon: 'ℹ️',  label: 'Note',    text: 'text-blue-600 dark:text-blue-300' },
-    tip:     { border: 'border-green-500/40',  bg: 'bg-green-50 dark:bg-green-500/10',  icon: '💡', label: 'Tip',     text: 'text-green-600 dark:text-green-300' },
-    warning: { border: 'border-yellow-500/40', bg: 'bg-yellow-50 dark:bg-yellow-500/10', icon: '⚠️', label: 'Warning', text: 'text-yellow-600 dark:text-yellow-300' },
-  }
-  const s = styles[variant ?? 'info']
-  return (
-    <div className={`my-6 rounded-xl border ${s.border} ${s.bg} p-5 flex gap-3`}>
-      <span className="text-xl shrink-0 mt-0.5">{s.icon}</span>
-      <div>
-        <p className={`text-xs font-bold uppercase tracking-wider mb-1 ${s.text}`}>{s.label}</p>
-        <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{text}</p>
-      </div>
-    </div>
-  )
-}
-
-function renderSection(section: ContentSection, index: number) {
-  switch (section.type) {
-    case 'intro':
-      return (
-        <p key={index} className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-8 border-l-4 border-purple-500/50 pl-5 italic">
-          {section.text}
-        </p>
-      )
-    case 'heading':
-      return (
-        <h2 key={index} className="text-2xl font-bold text-gray-900 dark:text-white mt-12 mb-4 flex items-center gap-3">
-          <span className="w-1 h-7 rounded-full bg-linear-to-b from-pink-500 to-purple-600 shrink-0" />
-          {section.text}
-        </h2>
-      )
-    case 'subheading':
-      return (
-        <h3 key={index} className="text-xl font-semibold text-purple-600 dark:text-purple-200 mt-8 mb-3">
-          {section.text}
-        </h3>
-      )
-    case 'paragraph':
-      return (
-        <p key={index} className="text-gray-700 dark:text-gray-300 leading-relaxed mb-5">
-          {section.text}
-        </p>
-      )
-    case 'code':
-      return <CodeBlock key={index} text={section.text ?? ''} language={section.language} />
-    case 'list':
-      return (
-        <ul key={index} className="my-5 space-y-2 pl-1">
-          {section.items?.map((item, i) => (
-            <li key={i} className="flex items-start gap-3 text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
-              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-purple-500 dark:bg-purple-400 shrink-0" />
-              {item}
-            </li>
-          ))}
-        </ul>
-      )
-    case 'callout':
-      return <Callout key={index} text={section.text ?? ''} variant={section.variant} />
-    default:
-      return null
-  }
-}
-
-export default function BlogPostPage({ post }: Props) {
+export default function BlogPostPage({ post, markdownContent }: Props) {
   const { theme, toggleTheme } = useTheme()
-  
+
   const formatDate = (dateStr: string) =>
     new Date(dateStr).toLocaleDateString('en-US', {
       year: 'numeric', month: 'long', day: 'numeric',
@@ -111,9 +32,9 @@ export default function BlogPostPage({ post }: Props) {
     return map[cat] ?? 'bg-gray-100 dark:bg-gray-500/20 text-gray-700 dark:text-gray-300 border-gray-300 dark:border-gray-500/30'
   }
 
-  const bgClass = theme === 'dark' 
-    ? 'bg-linear-to-b from-[#0a0a1f] via-[#1a0a2e] to-[#0a0a1f]'
-    : 'bg-linear-to-b from-gray-50 via-white to-gray-50'
+  const bgClass = theme === 'dark'
+    ? 'bg-gradient-to-b from-[#0a0a1f] via-[#1a0a2e] to-[#0a0a1f]'
+    : 'bg-gradient-to-b from-gray-50 via-white to-gray-50'
 
   return (
     <main className={`min-h-screen ${bgClass}`}>
@@ -143,7 +64,7 @@ export default function BlogPostPage({ post }: Props) {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 pt-32 pb-24">
+      <div className="max-w-4xl mx-auto px-6 pt-32 pb-24">
 
         {/* Hero */}
         <div className="mb-12 text-center">
@@ -163,17 +84,17 @@ export default function BlogPostPage({ post }: Props) {
             {post.title}
           </h1>
 
-          <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed max-w-4xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-400 text-base leading-relaxed max-w-3xl mx-auto">
             {post.excerpt}
           </p>
         </div>
 
         {/* Divider */}
-        <div className="h-px bg-linear-to-r from-transparent via-purple-400 dark:via-purple-500/40 to-transparent mb-12" />
+        <div className="h-px bg-gradient-to-r from-transparent via-purple-400 dark:via-purple-500/40 to-transparent mb-12" />
 
-        {/* Article content */}
+        {/* Article content — rendered from Markdown */}
         <article>
-          {post.content?.map((section, index) => renderSection(section, index))}
+          <MarkdownRenderer content={markdownContent} />
         </article>
 
         {/* Tags */}
@@ -193,7 +114,7 @@ export default function BlogPostPage({ post }: Props) {
 
         {/* Author card */}
         <div className="mt-10 glass-card bg-white/80 dark:bg-white/5 p-6 flex items-center gap-5 border border-gray-200 dark:border-white/10 backdrop-blur-sm">
-          <div className="w-14 h-14 rounded-full bg-linear-to-br from-pink-500 to-purple-600 flex items-center justify-center text-2xl font-bold text-white shrink-0">
+          <div className="w-14 h-14 rounded-full bg-gradient-to-br from-pink-500 to-purple-600 flex items-center justify-center text-2xl font-bold text-white shrink-0">
             K
           </div>
           <div>

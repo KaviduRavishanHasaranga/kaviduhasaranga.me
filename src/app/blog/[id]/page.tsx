@@ -1,5 +1,7 @@
 import { blogPosts } from '@/data/blogs'
 import { notFound } from 'next/navigation'
+import { promises as fs } from 'fs'
+import path from 'path'
 import BlogPostPage from '@/components/BlogPostPage'
 
 interface Props {
@@ -8,7 +10,7 @@ interface Props {
 
 export async function generateStaticParams() {
   return blogPosts
-    .filter(p => p.content && p.content.length > 0)
+    .filter(p => p.markdownFile)
     .map(p => ({ id: p.id }))
 }
 
@@ -26,9 +28,12 @@ export default async function Page({ params }: Props) {
   const { id } = await params
   const post = blogPosts.find(p => p.id === id)
 
-  if (!post || !post.content || post.content.length === 0) {
+  if (!post || !post.markdownFile) {
     notFound()
   }
 
-  return <BlogPostPage post={post} />
+  const mdPath = path.join(process.cwd(), 'content', 'blogs', post.markdownFile)
+  const markdownContent = await fs.readFile(mdPath, 'utf-8')
+
+  return <BlogPostPage post={post} markdownContent={markdownContent} />
 }

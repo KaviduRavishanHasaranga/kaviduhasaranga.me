@@ -481,3 +481,79 @@ body {
 :root.light li {
   color: inherit;
 }
+
+/* ===================================
+   HIGHLIGHT.JS — DARK MODE (default)
+=================================== */
+.hljs {
+  color: #abb2bf;
+  background: transparent;
+}
+.hljs-keyword,
+.hljs-operator,
+.hljs-selector-tag { color: #c678dd; }
+.hljs-string,
+.hljs-attr,
+.hljs-regexp { color: #98c379; }
+.hljs-number,
+.hljs-literal { color: #d19a66; }
+.hljs-comment { color: #5c6370; font-style: italic; }
+.hljs-function,
+.hljs-title { color: #61afef; }
+.hljs-variable,
+.hljs-params { color: #e06c75; }
+.hljs-type,
+.hljs-built_in,
+.hljs-class { color: #e5c07b; }
+.hljs-meta { color: #56b6c2; }
+.hljs-subst { color: #abb2bf; }
+.hljs-name { color: #e06c75; }
+.hljs-tag { color: #e06c75; }
+.hljs-attribute { color: #d19a66; }
+.hljs-property { color: #61afef; }
+.hljs-punctuation { color: #abb2bf; }
+.hljs-section { color: #e5c07b; font-weight: bold; }
+.hljs-bullet { color: #e06c75; }
+.hljs-link { color: #56b6c2; text-decoration: underline; }
+.hljs-addition { color: #98c379; background: rgba(152, 195, 121, 0.15); }
+.hljs-deletion { color: #e06c75; background: rgba(224, 108, 117, 0.15); }
+.hljs-emphasis { font-style: italic; }
+.hljs-strong { font-weight: bold; }
+
+/* ===================================
+   HIGHLIGHT.JS — LIGHT MODE
+=================================== */
+:root.light .hljs { color: #383a42; }
+:root.light .hljs-keyword,
+:root.light .hljs-operator,
+:root.light .hljs-selector-tag { color: #a626a4; }
+:root.light .hljs-string,
+:root.light .hljs-attr { color: #50a14f; }
+:root.light .hljs-number,
+:root.light .hljs-literal { color: #986801; }
+:root.light .hljs-comment { color: #a0a1a7; font-style: italic; }
+:root.light .hljs-function,
+:root.light .hljs-title { color: #4078f2; }
+:root.light .hljs-variable,
+:root.light .hljs-params { color: #e45649; }
+:root.light .hljs-type,
+:root.light .hljs-built_in,
+:root.light .hljs-class { color: #c18401; }
+:root.light .hljs-meta { color: #0184bb; }
+:root.light .hljs-addition { color: #50a14f; background: rgba(80, 161, 79, 0.15); }
+:root.light .hljs-deletion { color: #e45649; background: rgba(228, 86, 73, 0.15); }
+
+/* ===================================
+   MARKDOWN: ORDERED LIST FIX
+   (ol > li uses flex, need to override
+   for proper number rendering)
+=================================== */
+.markdown-body ol > li {
+  display: list-item;
+  list-style-type: decimal;
+  list-style-position: inside;
+}
+.markdown-body ol > li::before {
+  content: none;
+}
+

@@ -31,12 +31,12 @@ export default function Blog() {
       year: 'numeric', month: 'short', day: 'numeric',
     })
 
-  // A post is readable if it has internal content OR an external link
+  // A post is readable if it has a markdownFile OR an external link
   const hasContent = (post: typeof blogPosts[0]) =>
-    (post.content && post.content.length > 0) || (post.link && post.link !== '#')
+    !!post.markdownFile || (!!post.link && post.link !== '#')
 
   const getLink = (post: typeof blogPosts[0]) => {
-    if (post.content && post.content.length > 0) return `/blog/${post.id}`
+    if (post.markdownFile) return `/blog/${post.id}`
     if (post.link && post.link !== '#') return post.link
     return null
   }
