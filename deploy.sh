@@ -12,7 +12,7 @@ echo "📥 Pulling latest changes from GitHub..."
 git pull origin main
 
 echo "📦 Installing dependencies..."
-npm ci --production=false
+npm ci --include=dev
 
 echo "🔨 Building Next.js app..."
 npm run build
