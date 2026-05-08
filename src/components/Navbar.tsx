@@ -177,7 +177,22 @@ export default function Navbar() {
                   initial={{ x: -20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: index * 0.05 }}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                    e.preventDefault();
+                    setIsMenuOpen(false);
+                    // Delay scroll until the menu close animation settles
+                    setTimeout(() => {
+                      const target = document.querySelector(link.href);
+                      if (target) {
+                        const navbarHeight = 80;
+                        const targetPosition = target.getBoundingClientRect().top + window.scrollY - navbarHeight;
+                        window.scrollTo({
+                          top: targetPosition,
+                          behavior: 'smooth'
+                        });
+                      }
+                    }, 350);
+                  }}
                   className={`hover:text-purple-400 transition py-2 border-b border-gray-200/70 dark:border-gray-800/50 ${
                     activeSection === link.href ? 'text-purple-400 font-semibold' : ''
                   }`}
