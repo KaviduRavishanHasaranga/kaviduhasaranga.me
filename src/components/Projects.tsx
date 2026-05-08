@@ -7,7 +7,7 @@ import ScrollAnimation from './ScrollAnimation'
 
 export default function Projects() {
   return (
-    <section className="py-20 px-8 section-gradient" id="projects">
+    <section className="py-12 md:py-20 px-4 md:px-8 section-gradient" id="projects">
       <div className="max-w-6xl mx-auto">
         <ScrollAnimation>
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 mt-8">
@@ -16,7 +16,7 @@ export default function Projects() {
           <p className="text-center text-gray-400 mb-16">Some of my recent work</p>
         </ScrollAnimation>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
           {projects.map((project, index) => (
             <ScrollAnimation
               key={index}
@@ -27,8 +27,8 @@ export default function Projects() {
 
                 {/* ── Screenshot area ── */}
                 <div
-                  className="mx-4 mt-4 rounded-xl overflow-hidden bg-gray-900 border border-white/10 shrink-0"
-                  style={{ height: '185px' }}
+                  className="mx-3 mt-3 md:mx-4 md:mt-4 rounded-xl overflow-hidden bg-gray-900 border border-white/10 shrink-0"
+                  style={{ height: 'clamp(140px, 35vw, 185px)' }}
                 >
                   <Link
                   id={`project-details-${project.slug}`}
@@ -51,7 +51,7 @@ export default function Projects() {
                 </div>
 
                 {/* ── Card body ── */}
-                <div className="flex flex-col flex-1 px-5 pt-4 pb-5">
+                <div className="flex flex-col flex-1 px-3 pt-3 pb-4 md:px-5 md:pt-4 md:pb-5">
                   {/* Title */}
                   <Link
                   id={`project-details-${project.slug}`}
