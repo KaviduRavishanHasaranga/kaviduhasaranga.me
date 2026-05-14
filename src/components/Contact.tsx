@@ -137,11 +137,12 @@ export default function Contact() {
 
             {/* Download Resume */}
             <a 
-              href="/resume.pdf" 
+              href="/cv.pdf"
+              download="Kavidu_Hasaranga_CV.pdf"
               className="w-full glass-card p-6 flex items-center justify-center gap-3 text-lg font-semibold text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/10 transition-all duration-300 border border-gray-100 dark:border-white/10 hover:border-purple-500/30 shadow-xl shadow-purple-500/5"
             >
               <FaDownload className="text-blue-600 dark:text-blue-400" />
-              Download Resume
+              Download CV
             </a>
           </div>
         </div>

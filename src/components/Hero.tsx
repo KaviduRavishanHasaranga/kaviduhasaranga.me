@@ -169,20 +169,41 @@ export default function Hero() {
           className="flex gap-4 justify-center flex-wrap"
           variants={item}
         >
-          <motion.button 
-            className="bg-linear-to-r from-pink-500 to-purple-600 px-8 py-3 rounded-full font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300"
+          <motion.a
+            href="#projects"
+            className="bg-linear-to-r from-pink-500 to-purple-600 px-8 py-3 rounded-full font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50 transition-all duration-300 inline-flex items-center gap-2"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             View Projects
-          </motion.button>
-          <motion.button 
-            className="glass-card px-8 py-3 rounded-full font-semibold hover:bg-white/10 hover:scale-105 hover:shadow-xl transition-all duration-300"
+          </motion.a>
+          <motion.a
+            href="#contact"
+            className="glass-card px-8 py-3 rounded-full font-semibold hover:bg-white/10 hover:scale-105 hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Contact Me
-          </motion.button>
+          </motion.a>
+          <motion.a
+            href="/cv.pdf"
+            download="Kavidu_Hasaranga_CV.pdf"
+            className="relative overflow-hidden px-8 py-3 rounded-full font-semibold inline-flex items-center gap-2 border border-purple-500/40 bg-purple-500/10 hover:bg-purple-500/20 hover:border-purple-400/60 hover:shadow-2xl hover:shadow-purple-500/30 transition-all duration-300 group"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <svg
+              className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-0.5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Download CV
+            <span className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-linear-to-r from-purple-500/10 to-pink-500/10" />
+          </motion.a>
         </motion.div>
       </motion.div>
     </section>
