@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaGithub, FaLinkedin, FaPaperPlane, FaDownload, FaInstagram } from 'react-icons/fa'
-import { FaTwitch, FaTwitter, FaX } from 'react-icons/fa6'
+import { FaTwitter } from 'react-icons/fa6'
 import { HiMail, HiPhone, HiLocationMarker } from 'react-icons/hi'
 
 export default function Contact() {
@@ -13,7 +13,7 @@ export default function Contact() {
             Get In <span className="gradient-text">Touch</span>
           </h2>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">
-            Ready to bring your ideas to life? Let's discuss your next project and create something amazing together.
+            Ready to bring your ideas to life? Let&apos;s discuss your next project and create something amazing together.
           </p>
         </div>
 

@@ -9,6 +9,10 @@ interface GitHubStats {
   loading: boolean
 }
 
+interface GitHubRepo {
+  stargazers_count: number
+}
+
 export default function Github() {
   const [stats, setStats] = useState<GitHubStats>({
     repos: 0,
@@ -30,7 +34,7 @@ export default function Github() {
         const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`)
         const reposData = await reposResponse.json()
         
-        const totalStars = reposData.reduce((acc: number, repo: any) => acc + repo.stargazers_count, 0)
+        const totalStars = reposData.reduce((acc: number, repo: GitHubRepo) => acc + repo.stargazers_count, 0)
         
         setStats({
           repos: userData.public_repos || 0,

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { useTheme } from "@/context/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,6 +10,18 @@ export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+
+  const navLinks = useMemo(() => [
+    { href: "#about", label: "About" },
+    { href: "#education", label: "Education" },
+    { href: "#skills", label: "Skills" },
+    { href: "#certifications", label: "Certifications" },
+    { href: "#projects", label: "Projects" },
+    { href: "#github", label: "GitHub" },
+    { href: "#passions", label: "Passions" },
+    { href: "#contact", label: "Contact" },
+    { href: "#blog", label: "Blog" },
+  ], []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,21 +66,9 @@ export default function Navbar() {
     handleScroll(); // Check on mount
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [navLinks]);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
-  const navLinks = [
-    { href: "#about", label: "About" },
-    { href: "#education", label: "Education" },
-    { href: "#skills", label: "Skills" },
-    { href: "#certifications", label: "Certifications" },
-    { href: "#projects", label: "Projects" },
-    { href: "#github", label: "GitHub" },
-    { href: "#passions", label: "Passions" },
-    { href: "#contact", label: "Contact" },
-    { href: "#blog", label: "Blog" },
-  ];
 
   return (
     <motion.nav 
