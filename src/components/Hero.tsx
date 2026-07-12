@@ -186,7 +186,7 @@ export default function Hero() {
             Contact Me
           </motion.a>
           <motion.a
-            href="/cv.pdf"
+            href="/cv/Kavidu_Hasaranga_CV.pdf"
             download="Kavidu_Hasaranga_CV.pdf"
             className="relative overflow-hidden px-8 py-3 rounded-full font-semibold inline-flex items-center gap-2 border border-purple-500/40 bg-purple-500/10 hover:bg-purple-500/20 hover:border-purple-400/60 hover:shadow-2xl hover:shadow-purple-500/30 transition-all duration-300 group"
             whileHover={{ scale: 1.05 }}

@@ -112,7 +112,7 @@ export default function Navbar() {
 
           {/* Download CV Button */}
           <motion.a
-            href="cv.pdf"
+            href="/cv/Kavidu_Hasaranga_CV.pdf"
             download="Kavidu_Hasaranga_CV.pdf"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -220,7 +220,7 @@ export default function Navbar() {
 
               {/* Download CV — Mobile */}
               <motion.a
-                href="/cv.pdf"
+                href="/cv/Kavidu_Hasaranga_CV.pdf"
                 download="Kavidu_Hasaranga_CV.pdf"
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
